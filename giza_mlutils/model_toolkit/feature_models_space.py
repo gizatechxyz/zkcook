@@ -39,8 +39,8 @@ class FeatureSpaceConstants:
     def get_feature_space(model_type, can_we_transform_your_features):
         model_feature_space = FeatureSpaceConstants.FEATURE_SPACES.get(model_type, [])
         if can_we_transform_your_features:
-            full_feature_space = model_feature_space + FeatureSpaceConstants.CONSTANTS
-        return full_feature_space
+            model_feature_space = model_feature_space + FeatureSpaceConstants.CONSTANTS
+        return model_feature_space
 
     @staticmethod
     def adjust_dimension(dimension, model_param_value):

@@ -9,8 +9,6 @@ class ModelParameterExtractor:
             'LGBMClassifier': self.extract_params_from_lgb,
             'LGBMRegressor': self.extract_params_from_lgb,
             'Booster': self.extract_params_from_xgb,
-            'CatBoostClassifier': self.extract_params_from_catboost,
-            'CatBoostRegressor': self.extract_params_from_catboost,
         }
 
     def extract_params_from_xgb(self, model):
