@@ -1,6 +1,10 @@
 import json
 
 class ModelEvaluator:
+    """
+    Facilitates evaluation of machine learning models by encapsulating model-specific
+    evaluation logic within a unified interface.
+    """
     def __init__(self, model_type, eval_metric):
         self.eval_metric = eval_metric
         self.model_type = model_type
@@ -24,6 +28,18 @@ class ModelEvaluator:
         return best_score
 
     def evaluate_model(self, model):
+        """
+        Evaluates the given model using the appropriate evaluator based on the model type.
+
+        Args:
+            model (Model): The model to evaluate, can be of any type supported by the evaluators.
+
+        Returns:
+            float: The best score from the model's evaluation.
+
+        Raises:
+            ValueError: If no evaluator is available for the model type.
+        """
         if self.model_type in self.model_evaluators_by_name:
             evaluate_func = self.model_evaluators_by_name[self.model_type]
             best_score = evaluate_func(model)

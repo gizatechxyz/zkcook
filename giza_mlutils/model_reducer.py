@@ -9,8 +9,37 @@ from .model_toolkit.model_evaluator import ModelEvaluator
 from .model_toolkit.metrics import check_metric_optimization
 
 def mcr(model,X_train, y_train, X_eval, y_eval, eval_metric, can_we_transform_your_features):
+    """
+    This function optimizes GBT models like XGBoost, LightGBM, and CatBoost for use in zero-knowledge
+    machine learning (ZKML) applications by adjusting their complexity. It involves feature transformation
+    and parameter optimization to ensure the model is both efficient and compatible with stringent ZKML constraints.
+
+    Parameters:
+        model (object): The pre-trained model object.
+        X_train (DataFrame): Training features dataset.
+        y_train (Series): Training target variable.
+        X_eval (DataFrame): Evaluation features dataset.
+        y_eval (Series): Evaluation target variable.
+        eval_metric (str): The metric used to evaluate the model's performance.
+        can_we_transform_your_features (bool): Flag to determine if feature transformation is allowed.
+
+    Returns:
+        tuple: A tuple containing the retrained model and the transformer used for feature transformation.
+               The transformer may be None if `can_we_transform_your_features` is False.
+
+    The function performs the following steps:
+    - Extracts model parameters and identifies the model type.
+    - Adjusts the feature space based on the model's parameters and whether feature transformation is permissible.
+    - Optionally applies feature transformation to both training and evaluation datasets.
+    - Retrains the model using the adjusted feature space and optimized parameters.
+    - Evaluates the retrained model's performance and adjusts the scoring if necessary based on the desired metric optimization direction (maximize or minimize).
+    - Returns the optimized model along with any feature transformer used during the process.
+
+    Raises:
+        ValueError: If no evaluation function is found for the specified model type or if any other setup issue occurs.
+    """
     extractor = ModelParameterExtractor()
-    model_params, model_class = extractor.get_model_params_and_class(model) #TODO: revisar
+    model_params, model_class = extractor.get_model_params_and_class(model)
     model_type = ModelParameterExtractor.get_package_name(model_class)
     metric = check_metric_optimization(model_type, eval_metric)
     initial_feature_space = FeatureSpaceConstants.get_feature_space(model_type, can_we_transform_your_features)

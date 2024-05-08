@@ -3,6 +3,15 @@ from skopt.space import Categorical, Real, Integer
 
 
 class FeatureSpaceConstants:
+    """
+    A class for defining and manipulating the feature space for hyperparameter optimization.
+    
+    Attributes:
+        CONSTANTS (list): Constant parameters used in all model feature spaces.
+        MAX_TREES_PER_DEPTH (dict): Specifies the maximum number of trees per depth.
+        ADJUST_MIN_PARAMS (list): List of parameters which have minimum values that can be adjusted based on the model's settings.
+        FEATURE_SPACES (dict): Different sets of hyperparameters for different types of models.
+    """
     CONSTANTS = [
         Categorical([0.25, 0.50, 0.75], name='features_percentage_to_use'),
         Categorical(['pca','rfe'], name='dimensionality_reduction'),
@@ -37,6 +46,18 @@ class FeatureSpaceConstants:
 
     @staticmethod
     def get_feature_space(model_type, can_we_transform_your_features):
+        """
+        Retrieves the feature space for the specified model type, optionally enhancing it
+        with additional constants if feature transformation is allowed.
+
+        Args:
+            model_type (str): Type of the model ('lightgbm', 'catboost', 'xgboost').
+            can_we_transform_your_features (bool): Whether additional transformations
+                can be applied to the feature space.
+
+        Returns:
+            list: A list of hyperparameter spaces configured for the model.
+        """
         model_feature_space = FeatureSpaceConstants.FEATURE_SPACES.get(model_type, [])
         if can_we_transform_your_features:
             model_feature_space = model_feature_space + FeatureSpaceConstants.CONSTANTS
@@ -44,6 +65,16 @@ class FeatureSpaceConstants:
 
     @staticmethod
     def adjust_dimension(dimension, model_param_value):
+        """
+        Adjusts the boundaries of a given hyperparameter based on the current model's parameter value.
+
+        Args:
+            dimension (Dimension): The skopt dimension object representing a hyperparameter.
+            model_param_value (float): The current value of the parameter in the model.
+
+        Returns:
+            Dimension: The adjusted hyperparameter dimension with updated boundaries.
+        """
         if dimension.name in FeatureSpaceConstants.ADJUST_MIN_PARAMS and model_param_value < dimension.high:
             print(f"Adjusting {dimension.name} to new range: [{model_param_value}, {dimension.high}]")
             return Real(model_param_value, dimension.high, name=dimension.name)
@@ -58,7 +89,17 @@ class FeatureSpaceConstants:
 
     @staticmethod
     def adjust_search_space(space, model_params):
-        # Añadir if para la profundidad de lightgbm
+        """
+        Adjusts the entire search space based on the model's parameters, potentially altering
+        each dimension to fit better with current model configurations.
+
+        Args:
+            space (list of Dimension): The initial search space dimensions.
+            model_params (dict): Current parameter values from the model.
+
+        Returns:
+            list: The list of adjusted dimensions forming the new search space.
+        """
         adjusted_space = []
         for dimension in space:
             if dimension.name in model_params:
