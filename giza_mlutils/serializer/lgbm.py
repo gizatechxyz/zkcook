@@ -1,8 +1,9 @@
 import json
+import os
 
-def serialize(model, json_name, path):
-    model.booster_.save_model('./modelo_clf.txt')
-    with open('modelo_clf.txt', 'r') as file:
+def serialize(model, path, json_name):
+    model.booster_.save_model(path + "/model_tmp.txt")
+    with open(path + "/model_tmp.txt", 'r') as file:
         model_text = file.read()
 
     tree_blocks = model_text.split("Tree=")[1:]
@@ -34,9 +35,10 @@ def serialize(model, json_name, path):
 
     json_transformed = {
         "base_score": 0,
-        "opt_type": 1,
+        "opt_type": 1, #TODO: review this value
         "trees_number": len(trees),
         "trees": trees
     }
     with open(path + json_name, 'w') as f:
         json.dump(json_transformed, f)
+    os.remove(path + "/model_tmp.txt")

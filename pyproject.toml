@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "giza-mlutils"
+version = "0.1.0"
+description = ""
+authors = ["Alejandro Martinez <alejandro@gizatech.xyz>"]
+readme = "README.md"
+license = "MIT"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2"
+rich = "^13"
+scikit-learn = "^1.4.2"
+scikit-optimize = "^0.10.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+pre-commit = "^3.6.0"
+ruff = "^0.1.11"
+black = "^23.12.1"
+isort = "^5.13.2"
+ipykernel = "^6.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
