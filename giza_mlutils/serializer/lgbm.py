@@ -2,6 +2,24 @@ import json
 import os
 
 def serialize(model, path, json_name):
+    """
+    Serializes a model's structure to a JSON file for further use or analysis.
+
+    This function saves the model to a temporary text file, extracts tree information
+    from the text format, and transforms it into a structured JSON format that includes
+    the base weights, split conditions, child nodes, and split features for each tree.
+    The JSON file is saved to the specified path with the given json_name. The temporary
+    model file is deleted after the JSON is created.
+
+    Args:
+        model (model object): The trained model that is to be serialized.
+        path (str): The directory path where the JSON file will be saved.
+        json_name (str): The name of the JSON file to store the serialized data.
+
+    Raises:
+        FileNotFoundError: If the temporary model file could not be found or opened.
+        IOError: If there are issues writing the JSON file or deleting the temporary file.
+    """
     model.booster_.save_model(path + "/model_tmp.txt")
     with open(path + "/model_tmp.txt", 'r') as file:
         model_text = file.read()
