@@ -13,6 +13,7 @@ pydantic = "^2"
 rich = "^13"
 scikit-learn = "^1.4.2"
 scikit-optimize = "^0.10.1"
+pandas = "^2.2.2"
 
 
 [tool.poetry.group.dev.dependencies]
