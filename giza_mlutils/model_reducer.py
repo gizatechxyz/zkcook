@@ -2,15 +2,14 @@ from skopt import gp_minimize
 from skopt.utils import use_named_args
 
 from giza_mlutils.model_toolkit.data_transformer import DataTransformer
-from giza_mlutils.model_toolkit.feature_models_space import \
-    FeatureSpaceConstants
+from giza_mlutils.model_toolkit.feature_models_space import FeatureSpaceConstants
 from giza_mlutils.model_toolkit.metrics import check_metric_optimization
 from giza_mlutils.model_toolkit.model_evaluator import ModelEvaluator
 from giza_mlutils.model_toolkit.model_info import ModelParameterExtractor
 from giza_mlutils.model_toolkit.model_trainer import ModelTrainer
 
 
-def mcr(model, X_train, y_train, X_eval, y_eval, eval_metric, transform_features = False):
+def mcr(model, X_train, y_train, X_eval, y_eval, eval_metric, transform_features=False):
     """
     This function optimizes GBT models like XGBoost, LightGBM, and CatBoost for use in zero-knowledge
     machine learning (ZKML) applications by adjusting their complexity. It involves feature transformation
