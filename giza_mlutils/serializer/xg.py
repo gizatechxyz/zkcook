@@ -1,4 +1,2 @@
-import json
-
-def serialize(model, path, json_name):
-    model.save_model(path + json_name)
+def serialize(model, output_path):
+    model.save_model(output_path)
