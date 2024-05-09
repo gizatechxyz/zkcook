@@ -1,17 +1,16 @@
-import json
-
 class ModelEvaluator:
     """
     Facilitates evaluation of machine learning models by encapsulating model-specific
     evaluation logic within a unified interface.
     """
+
     def __init__(self, model_type, eval_metric):
         self.eval_metric = eval_metric
         self.model_type = model_type
         self.model_evaluators_by_name = {
-            'xgboost': self.evaluate_xgb,
-            'lightgbm': self.evaluate_lgb,
-            'catboost': self.evaluate_catboost,
+            "xgboost": self.evaluate_xgb,
+            "lightgbm": self.evaluate_lgb,
+            "catboost": self.evaluate_catboost,
         }
 
     def evaluate_xgb(self, model):
@@ -20,11 +19,11 @@ class ModelEvaluator:
 
     def evaluate_lgb(self, model):
         best_score = model.best_score_
-        best_score = best_score['valid_0'][self.eval_metric]
+        best_score = best_score["valid_0"][self.eval_metric]
         return best_score
 
     def evaluate_catboost(self, model):
-        best_score = model.get_best_score()['validation'][self.eval_metric]
+        best_score = model.get_best_score()["validation"][self.eval_metric]
         return best_score
 
     def evaluate_model(self, model):

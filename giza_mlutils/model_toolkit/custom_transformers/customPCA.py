@@ -1,6 +1,6 @@
-from sklearn.decomposition import PCA
-from sklearn.feature_selection import RFE
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.decomposition import PCA
+
 
 class CustomPCA(BaseEstimator, TransformerMixin):
     def __init__(self, percentage=0.50):
@@ -17,8 +17,8 @@ class CustomPCA(BaseEstimator, TransformerMixin):
         return X_transformed[:, :n_components]
 
     def set_params(self, **params):
-        self.percentage = params.get('percentage', self.percentage)
+        self.percentage = params.get("percentage", self.percentage)
         return self
-    
+
     def set_percentage(self, percentage):
         self.percentage = percentage
