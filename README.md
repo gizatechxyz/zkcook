@@ -2,9 +2,9 @@
 
 This package is designed to provide functionality that facilitates the transition from ML algorithms to ZKML. Its two main functionalities are:
 
-- [**Serialization**](#-Serialization): saving a trained ML model in a specific format to be interpretable by other programs.
+- [**Serialization**](#serialization): saving a trained ML model in a specific format to be interpretable by other programs.
 
-- [**model_complexity-reducer**](#-model_complexity-reducer): Given a model and a training dataset, transform the model and the data to obtain a lighter representation that maximizes the tradeoff between performance and complexity.
+- [**model-complexity-reducer (mcr)**](#mcr): Given a model and a training dataset, transform the model and the data to obtain a lighter representation that maximizes the tradeoff between performance and complexity.
 
 It's important to note that although the main goal is the transition from ML to ZKML, auto-zkml can be useful in other contexts, such as:
 
@@ -55,10 +55,10 @@ To run it:
 ```python
 model, transformer = mcr(model = MY_MODEL,
                          X_train = X_train,
-                         y_train = y_train, 
-                         X_eval = X_test, 
-                         y_eval = y_test, 
-                         eval_metric = 'rmse', 
+                         y_train = y_train,
+                         X_eval = X_test,
+                         y_eval = y_test,
+                         eval_metric = 'rmse',
                          transform_features = True)
 ```
 
