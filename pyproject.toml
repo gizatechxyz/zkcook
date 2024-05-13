@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "giza-mlutils"
+name = "auto-zkml"
 version = "0.1.0"
 description = ""
 authors = ["Alejandro Martinez <alejandro@gizatech.xyz>"]
