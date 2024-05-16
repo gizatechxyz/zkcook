@@ -58,7 +58,6 @@ class ModelTrainer:
         params["eval_metric"] = eval_metric
         model = self.model_class(**params)
 
-        # Entrenamiento con parámetros específicos de fit
         model.fit(X_train, y_train, eval_set=[(X_eval, y_eval)])
 
         return model

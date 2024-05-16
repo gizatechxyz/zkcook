@@ -1,5 +1,5 @@
-from giza_mlutils.model_reducer import mcr
-from giza_mlutils.serializer.serialize import serialize_model
+from auto_zkml.model_reducer import mcr
+from auto_zkml.serializer.serialize import serialize_model
 
 __all__ = ["mcr", "serialize_model"]
 

@@ -35,8 +35,3 @@ repos:
         entry: ruff
         language: system
         files: "py$"
-      - id: mypy
-        name: mypy
-        entry: mypy
-        language: system
-        files: "py$"

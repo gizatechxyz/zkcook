@@ -23,6 +23,7 @@ ruff = "^0.1.11"
 black = "^23.12.1"
 isort = "^5.13.2"
 ipykernel = "^6.29.0"
+pytest-cov = "^5.0.0"
 
 [build-system]
 requires = ["poetry-core"]
