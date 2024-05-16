@@ -1,5 +1,5 @@
-from giza_mlutils.model_toolkit.model_info import ModelParameterExtractor
-from giza_mlutils.serializer import lgbm, xg
+from auto_zkml.model_toolkit.model_info import ModelParameterExtractor
+from auto_zkml.serializer import lgbm, xg
 
 
 def serialize_model(model, output_path):
