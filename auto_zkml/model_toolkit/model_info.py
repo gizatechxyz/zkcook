@@ -2,7 +2,7 @@ import json
 
 
 class ModelParameterExtractor:
-    # TODO: creo que se puede cambiar por un método solo por tipo de algoritmo.
+
     def __init__(self):
         self.model_extractors_by_name = {
             "XGBRegressor": self.extract_params_from_xgb,
