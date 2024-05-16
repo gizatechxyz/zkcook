@@ -2,7 +2,6 @@ import json
 
 
 class ModelParameterExtractor:
-
     def __init__(self):
         self.model_extractors_by_name = {
             "XGBRegressor": self.extract_params_from_xgb,
