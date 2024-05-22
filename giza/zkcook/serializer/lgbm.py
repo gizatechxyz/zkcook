@@ -24,6 +24,12 @@ def serialize(model, output_path):
     with open("./model_tmp.txt") as file:
         model_text = file.read()
 
+    if "binary" in model_text:
+        opt_type = 1
+    elif "regression" in model_text:
+        opt_type = 0
+    else:
+        raise ValueError("The objective needs to be classification or regression.")
     tree_blocks = model_text.split("Tree=")[1:]
     trees = []
 
@@ -60,8 +66,9 @@ def serialize(model, output_path):
         )
 
     json_transformed = {
+        "model_type": "lightgbm",
+        "opt_type": opt_type,
         "base_score": 0,
-        "opt_type": 1,  # TODO: review this value
         "trees_number": len(trees),
         "trees": trees,
     }

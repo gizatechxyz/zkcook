@@ -27,11 +27,11 @@ jobs:
           poetry install --all-extras
       - name: Lint with ruff
         run: |
-          poetry run ruff auto_zkml
+          poetry run ruff giza
       - name: Pre-commit check
         run: |
           poetry run pre-commit run --all-files
       # Bring back when tests area working
       # - name: Testing
       #   run: |
-      #     poetry run pytest --cov=auto_zkml --cov-report term-missing
+      #     poetry run pytest --cov=giza.zkcook --cov-report term-missing

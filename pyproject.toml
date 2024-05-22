@@ -1,10 +1,11 @@
 [tool.poetry]
-name = "auto-zkml"
+name = "giza-zkcook"
 version = "0.1.0"
 description = ""
 authors = ["Alejandro Martinez <alejandro@gizatech.xyz>"]
 readme = "README.md"
 license = "MIT"
+packages = [{include = "giza"}]
 
 
 [tool.poetry.dependencies]

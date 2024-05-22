@@ -1,4 +1,4 @@
-# auto-zkml
+# zkcook
 
 This package is designed to provide functionality that facilitates the transition from ML algorithms to ZKML. Its two main functionalities are:
 
@@ -6,7 +6,7 @@ This package is designed to provide functionality that facilitates the transitio
 
 - [**model-complexity-reducer (mcr)**](#mcr): Given a model and a training dataset, transform the model and the data to obtain a lighter representation that maximizes the tradeoff between performance and complexity.
 
-It's important to note that although the main goal is the transition from ML to ZKML, auto-zkml can be useful in other contexts, such as:
+It's important to note that although the main goal is the transition from ML to ZKML, mcr can be useful in other contexts, such as:
 
 - The model's weight needs to be minimal, for example for mobile applications.
 - Minimal inference times are required for low latency applications.
@@ -20,7 +20,7 @@ It's important to note that although the main goal is the transition from ML to 
 For the latest release:
 
 ```bash
-pip install auto-zkml
+pip install giza-zkcook
 ```
 
 ### Installing from source
@@ -29,8 +29,8 @@ Clone the repository and install it with `pip`:
 
 
 ```bash
-    git clone git@github.com:gizatechxyz/auto-zkml.git
-    cd auto-zkml
+    git clone git@github.com:gizatechxyz/zkcook.git
+    cd zkcook
     pip install .
 ```
 
@@ -41,7 +41,7 @@ To see in more detail how this tool works, check out this [tutorial](tutorials/s
 To run it:
 
 ```python
-from auto_zkml import serialize_model
+from giza.zkcook import serialize_model
 
 serialize_model(YOUR_TRAINED_MODEL, "OUTPUT_PATH/MODEL_NAME.json")
 ```
