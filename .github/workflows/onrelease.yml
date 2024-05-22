@@ -30,11 +30,11 @@ jobs:
             poetry install
       - name: Lint with ruff
         run: |
-            poetry run ruff auto_zkml
+            poetry run ruff giza
       - name: Build dist
         run: poetry build
       - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{ secrets.GIZA_AUTOZKML_PYPI_TOKEN }}
+          password: ${{ secrets.GIZA_ZKCOOK_PYPI_TOKEN }}
