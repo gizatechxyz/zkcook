@@ -2,8 +2,8 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from auto_zkml.model_toolkit.custom_transformers.customPCA import CustomPCA
-from auto_zkml.model_toolkit.custom_transformers.customRFE import CustomRFE
+from giza.zkcook.model_toolkit.custom_transformers.customPCA import CustomPCA
+from giza.zkcook.model_toolkit.custom_transformers.customRFE import CustomRFE
 
 
 class DataTransformer(BaseEstimator, TransformerMixin):
