@@ -30,8 +30,10 @@ repos:
         entry: isort
         language: system
         files: "py$"
+        args: ["--line-length=145"]
       - id: ruff
         name: ruff
         entry: ruff
         language: system
         files: "py$"
+        args: ["--line-length=145"]
