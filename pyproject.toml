@@ -12,9 +12,9 @@ packages = [{include = "giza"}]
 python = "^3.11"
 pydantic = "^2"
 rich = "^13"
-scikit-learn = "^1.4.2"
+scikit-learn = "1.4.2"
 scikit-optimize = "^0.10.1"
-pandas = "^2.2.2"
+pandas = "^1.5.3"
 
 
 [tool.poetry.group.dev.dependencies]
