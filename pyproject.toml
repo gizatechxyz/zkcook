@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "giza-zkcook"
-version = "0.1.0"
+version = "0.2.2"
 description = ""
 authors = ["Alejandro Martinez <alejandro@gizatech.xyz>"]
 readme = "README.md"
